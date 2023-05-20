@@ -1,12 +1,14 @@
 import React from 'react';
 import classes from './ChatLayout.module.scss';
 import { Outlet } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 
 const ChatLayout = () => {
   return (
     <>
-      <div className={classes.profileLayout}>
+      <div className={classes.wrapper}>
         <div className={classes.content}>
+          <Sidebar />
           <Outlet />
         </div>
       </div>

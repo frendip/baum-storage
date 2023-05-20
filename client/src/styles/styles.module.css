@@ -73,9 +73,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-body {
+body, #root, html {
   font-family: "Exo 2", sans-serif;
   background: #141414 no-repeat fixed;
+  height: 100%;
 }
 
 /*# sourceMappingURL=styles.module.css.map */
