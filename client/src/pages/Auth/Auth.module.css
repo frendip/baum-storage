@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-width: 370px;
   gap: 20px 0;
 }
 .content__logo {
