@@ -19,37 +19,43 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
   });
 
   return (
-    <div className={classes.card}>
-      <h2 className={classes.card__title}>Sign in to Get </h2>
       <form className={classes.form} onSubmit={handleSubmit(onSubmitHandler)}>
         {messageError && <div className={classes.form__error}>{messageError}</div>}
         <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Почта</div>
           <input
             className={classes.form__input}
-            {...register('email', {
-              required: 'Введите почту.',
-              pattern: {
-                value:
-                  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
-                message: 'Введите корректную почту.',
+            {...register('login', {
+              required: 'Enter login',
+              minLength: {
+                value: 4,
+                message: "Login length cannot be less than 4 characters",
               },
+              maxLength: {
+                value: 20,
+                message: "Login length cannot exceed 20 characters",
+              }
             })}
+            placeholder={"Login"}
           />
-          {errors?.email && <div className={classes.form__error}>{errors.email.message}</div>}
+          {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
         </label>
         <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Пароль</div>
           <input
             type={'password'}
             className={classes.form__input}
             {...register('password', {
-              required: 'Введите пароль.',
+              required: 'Enter password',
               minLength: {
                 value: 6,
-                message: 'Пароль должен содержать минимум 6 символов.',
-              },
+                message:
+                  'Password must contain at least 6 characters.',
+              },maxLength: {
+                value: 20,
+                message: "Password length cannot exceed 20 characters",
+              }
             })}
+            placeholder={"Password"}
+
           />
           {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
         </label>
@@ -57,7 +63,6 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
           <CommonButton size={'large'}>Войти!</CommonButton>
         </div>
       </form>
-    </div>
   );
 };
 

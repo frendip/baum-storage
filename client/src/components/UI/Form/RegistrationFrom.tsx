@@ -27,7 +27,7 @@ const RegistrationFrom: FC<RegistrationFromProps> = ({ messageError, onSubmitHan
           <div className={classes.form__labelTitle}>Почта</div>
           <input
             className={classes.form__input}
-            {...register('email', {
+            {...register('login', {
               required: 'Введите почту.',
               pattern: {
                 value:
@@ -36,7 +36,7 @@ const RegistrationFrom: FC<RegistrationFromProps> = ({ messageError, onSubmitHan
               },
             })}
           />
-          {errors?.email && <div className={classes.form__error}>{errors.email.message}</div>}
+          {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
         </label>
         <label className={classes.form__label}>
           <div className={classes.form__labelTitle}>Имя</div>

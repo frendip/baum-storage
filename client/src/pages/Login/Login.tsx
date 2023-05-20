@@ -6,7 +6,7 @@ import { fetchLogin } from '../../store/slices/authSlice';
 import { SubmitHandler } from 'react-hook-form';
 import { ILogin } from '../../types/types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -14,9 +14,9 @@ const Login = () => {
 
   const [messageError, setMessageError] = useState<string>('');
   const onSubmitHandler: SubmitHandler<ILogin> = async (data) => {
-    const { email, password } = data;
+    const { login, password } = data;
 
-    const val = await dispatch(fetchLogin({ email, password }));
+    const val = await dispatch(fetchLogin({ login, password }));
     if (val.type.endsWith('fulfilled')) {
       navigate('/');
     } else {
