@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap"); /*Обнуление*/
 * {
   padding: 0;
   margin: 0;
@@ -74,7 +74,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /*--------------------*/
 body {
-  background: aqua;
+  font-family: "Exo 2", sans-serif;
+  background: #141414 no-repeat fixed;
 }
 
 /*# sourceMappingURL=styles.module.css.map */
