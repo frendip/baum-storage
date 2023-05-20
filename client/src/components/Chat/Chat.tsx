@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './Chats.module.scss';
+import classes from './Chat.module.scss';
 import ChatHeader from '../ChatHeader/ChatHeader';
 import MessageField from '../MessageField/MessageField';
 import MessageInput from '../MessageInput/MessageInput';
 
-const Chats = () => {
+const Chat = () => {
   return (
     <div className={classes.wrapper}>
       <ChatHeader />
@@ -14,4 +14,4 @@ const Chats = () => {
   );
 };
 
-export default Chats;
+export default Chat;
