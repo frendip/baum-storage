@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 const ChatLayout = () => {
   return (
     <>
-      <div className={classes.chatLayout}>
+      <div className={classes.wrapper}>
         <div className={classes.content}>
           <Sidebar />
           <Outlet />
