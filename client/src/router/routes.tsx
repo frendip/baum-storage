@@ -2,7 +2,7 @@ import React, { JSX } from 'react';
 import { Navigate } from 'react-router-dom';
 import Login from '../pages/Auth/Login';
 import Registration from '../pages/Auth/Registration';
-import Chats from '../components/Chats/Chats';
+import Chat from '../components/Chat/Chat';
 
 interface IRouter {
   path: string;
@@ -11,7 +11,7 @@ interface IRouter {
 
 export const privateRoutes: IRouter[] = [
   { path: '/', element: <div>gedfsds</div> },
-  { path: '/:id', element: <Chats /> },
+  { path: '/:id', element: <Chat /> },
 ];
 
 export const publicRoutes: IRouter[] = [
