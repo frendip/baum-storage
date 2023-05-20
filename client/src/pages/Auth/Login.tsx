@@ -7,6 +7,8 @@ import { SubmitHandler } from 'react-hook-form';
 import { ILogin } from '../../types/types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
+import classes from './Auth.module.scss';
+import logo from '../../assets/logo.png';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -26,13 +28,19 @@ const Login = () => {
 
   const status = useAppSelector((state) => state.auth.status);
   return (
-    <>
+    <div className={classes.auth}>
       {status === 'loading' ? (
         <Loading />
       ) : (
-        <LoginForm messageError={messageError} onSubmitHandler={onSubmitHandler} />
+        <div className={classes.content}>
+          <div className={classes.content__logo}>
+            <img src={logo} alt="logo" />
+          </div>
+          <div className={classes.content__title}>Sign in to Get Started</div>
+          <LoginForm messageError={messageError} onSubmitHandler={onSubmitHandler} />
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
