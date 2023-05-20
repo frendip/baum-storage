@@ -1,6 +1,6 @@
 
-
 .form {
+  width: 100%;
   padding-top: 10px;
 
   display: flex;
@@ -8,15 +8,16 @@
   align-items: center;
 
   &__label {
-   width: 30%;
+    width: 100%;
   }
 
-  input::placeholder{
+  input::placeholder {
     font-size: 16px;
     font-weight: 400;
     opacity: 0.6;
     color: #c5c5c5;
   }
+
   &__input {
 
     margin-top: 10px;
