@@ -28,13 +28,11 @@ router.post('/login', async (req, res) => {
             return res.status(404).json({ message: `Invalid email or password` })
         }
 
-        const user = candidate[0]
-
-        if (!bcrypt.compareSync(password, user.password)) {
+        if (!bcrypt.compareSync(password, candidate.password)) {
             return res.status(403).json({ message: `Invalid email or password` })
         }
 
-        const jwtToken = jwt.sign({ userID: user.id },
+        const jwtToken = jwt.sign({ userID: candidate.id_user },
             config.get('jwt'),
             { expiresIn: '1h' }
         );
@@ -50,7 +48,6 @@ router.post('/login', async (req, res) => {
 router.post('/registration', async (req, res) => {
     try {
         const { username, email, password } = req.body
-        console.log(req.body)
 
         if (username === null || email === null || password === null) {
             return res.status(400).json({ message: `Incorrect data` })
@@ -69,10 +66,11 @@ router.post('/registration', async (req, res) => {
             return res.status(404).json({ message: `This email has already been registered` })
         }
 
+        const protectedPassword = await bcrypt.hash(password, 12);
         const user = await db.models.user.create({
             user_name: username,
             email: email,
-            password: password
+            password: protectedPassword
         });
 
         const jwtToken = jwt.sign({ userID: user.id_user },
