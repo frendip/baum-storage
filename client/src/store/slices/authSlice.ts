@@ -23,9 +23,9 @@ export const fetchLogin = createAsyncThunk<tokenType, ILogin>(
 
 export const fetchRegistration = createAsyncThunk<tokenType, IRegistration>(
   'auth/fetchRegistration',
-  async ({ username, password, email  }, { rejectWithValue }) => {
+  async ({ username, email , password   }, { rejectWithValue }) => {
     try {
-      const response = await AuthService.getRegistration( username, password, email  );
+      const response = await AuthService.getRegistration( username, email , password  );
       const data = await response.json();
 
       if (!response.ok) {
