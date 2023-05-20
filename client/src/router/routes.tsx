@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 import { Navigate } from 'react-router-dom';
-import Login from '../pages/Login/Login';
-import Registration from '../pages/Registration/Registration';
+import Login from '../pages/Auth/Login';
+import Registration from '../pages/Auth/Registration';
 
 interface IRouter {
   path: string;
