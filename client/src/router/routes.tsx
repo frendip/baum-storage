@@ -10,7 +10,7 @@ interface IRouter {
 }
 
 export const privateRoutes: IRouter[] = [
-  { path: '/', element: <Chats /> },
+  { path: '/', element: <div>gedfsds</div> },
   { path: '/:id', element: <Chats /> },
 ];
 
