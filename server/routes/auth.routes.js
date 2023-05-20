@@ -50,6 +50,7 @@ router.post('/login', async (req, res) => {
 router.post('/registration', async (req, res) => {
     try {
         const { username, email, password } = req.body
+        console.log(req.body)
 
         if (username === null || email === null || password === null) {
             return res.status(400).json({ message: `Incorrect data` })
