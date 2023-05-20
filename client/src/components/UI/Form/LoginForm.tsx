@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ILogin } from '../../../types/types';
 import classes from './formCard.module.scss';
-import { CommonButton } from '../Button/Button';
+import { AuthButton } from '../Button/Button';
 
 interface LoginFormProps {
   messageError: string;
@@ -58,7 +58,7 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
           {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
         </label>
         <div className={classes.form__submit}>
-          <CommonButton size={'large'}>Войти!</CommonButton>
+          <AuthButton>Login</AuthButton>
         </div>
       </form>
   );

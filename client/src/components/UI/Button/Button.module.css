@@ -9,62 +9,16 @@
   transition-duration: 0.2s;
 }
 
-.commonBtn {
+.authBtn {
   color: white;
-}
-.commonBtn__small {
-  padding: 5px;
-  font-size: 12px;
-  border-radius: 5px;
-}
-.commonBtn__medium {
   width: 100%;
-  padding: 10px 20px;
+  padding: 12px 0;
   font-size: 16px;
   border-radius: 10px;
+  background: linear-gradient(210deg, rgba(239, 115, 110, 0.7) 0%, rgba(157, 72, 232, 0.7) 50%, rgba(73, 144, 248, 0.7) 100%);
 }
-.commonBtn__large {
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 15px;
-}
-.commonBtn__stretched {
-  width: 100%;
-}
-.commonBtn__textPositionLeft {
-  text-align: left;
-  padding-left: 7px;
-}
-.commonBtn__row {
-  display: flex;
-  align-items: center;
-  gap: 0 5px;
-}
-.commonBtn__img {
-  position: relative;
-}
-.commonBtn__img img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-}
-.commonBtn__small .commonBtn__img {
-  width: 12px;
-  height: 12px;
-}
-.commonBtn__medium .commonBtn__img {
-  width: 16px;
-  height: 16px;
-}
-.commonBtn__large .commonBtn__img {
-  width: 18px;
-  height: 18px;
-}
-.commonBtn:hover {
-  background: #3b3b3b;
+.authBtn:hover {
+  background: linear-gradient(210deg, #ef736e 0%, #9d48e8 50%, #4990f8 100%);
 }
 
 /*# sourceMappingURL=Button.module.css.map */
