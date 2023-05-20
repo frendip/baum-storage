@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IRegistration } from '../../../types/types';
 import classes from './formCard.module.scss';
-import { CommonButton } from '../Button/Button';
+import { AuthButton } from '../Button/Button';
 
 interface RegistrationFromProps {
   messageError: string;
@@ -84,7 +84,7 @@ const RegistrationFrom: FC<RegistrationFromProps> = ({ messageError, onSubmitHan
           {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
         </label>
         <div className={classes.form__submit}>
-          <CommonButton size={'large'}>Зарегистрироваться!</CommonButton>
+          <AuthButton>Registration!</AuthButton>
         </div>
       </form>
     </div>

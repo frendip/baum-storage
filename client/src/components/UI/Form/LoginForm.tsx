@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ILogin } from '../../../types/types';
 import classes from './formCard.module.scss';
-import { CommonButton } from '../Button/Button';
+import { AuthButton } from '../Button/Button';
 
 interface LoginFormProps {
   messageError: string;
@@ -19,50 +19,49 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
   });
 
   return (
-      <form className={classes.form} onSubmit={handleSubmit(onSubmitHandler)}>
-        {messageError && <div className={classes.form__error}>{messageError}</div>}
-        <label className={classes.form__label}>
-          <input
-            className={classes.form__input}
-            {...register('login', {
-              required: 'Enter login',
-              minLength: {
-                value: 4,
-                message: "Login length cannot be less than 4 characters",
-              },
-              maxLength: {
-                value: 20,
-                message: "Login length cannot exceed 20 characters",
-              }
-            })}
-            placeholder={"Login"}
-          />
-          {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
-        </label>
-        <label className={classes.form__label}>
-          <input
-            type={'password'}
-            className={classes.form__input}
-            {...register('password', {
-              required: 'Enter password',
-              minLength: {
-                value: 6,
-                message:
-                  'Password must contain at least 6 characters.',
-              },maxLength: {
-                value: 20,
-                message: "Password length cannot exceed 20 characters",
-              }
-            })}
-            placeholder={"Password"}
-
-          />
-          {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
-        </label>
-        <div className={classes.form__submit}>
-          <CommonButton size={'large'}>Войти!</CommonButton>
-        </div>
-      </form>
+    <form className={classes.form} onSubmit={handleSubmit(onSubmitHandler)}>
+      {messageError && <div className={classes.form__error}>{messageError}</div>}
+      <label className={classes.form__label}>
+        <input
+          className={classes.form__input}
+          {...register('login', {
+            required: 'Enter login',
+            minLength: {
+              value: 4,
+              message: 'Login length cannot be less than 4 characters',
+            },
+            maxLength: {
+              value: 20,
+              message: 'Login length cannot exceed 20 characters',
+            },
+          })}
+          placeholder={'Login'}
+        />
+        {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
+      </label>
+      <label className={classes.form__label}>
+        <input
+          type={'password'}
+          className={classes.form__input}
+          {...register('password', {
+            required: 'Enter password',
+            minLength: {
+              value: 6,
+              message: 'Password must contain at least 6 characters.',
+            },
+            maxLength: {
+              value: 20,
+              message: 'Password length cannot exceed 20 characters',
+            },
+          })}
+          placeholder={'Password'}
+        />
+        {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
+      </label>
+      <div className={classes.form__submit}>
+        <AuthButton>Login</AuthButton>
+      </div>
+    </form>
   );
 };
 
