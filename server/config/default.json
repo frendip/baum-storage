@@ -1,0 +1,12 @@
+{
+  "port": 3000,
+  "db": {
+    "connectionLimit": 5,
+    "host": "bn5k8vkseaawzurjfpov-mysql.services.clever-cloud.com",
+    "user": "ueuphtlpbhtpzbf7",
+    "password": "fLLTgPGjDugKxgqYaQ4G",
+    "port": "3306",
+    "database": "bn5k8vkseaawzurjfpov"
+  },
+  "jwt": "White theme is very very bad"
+}
