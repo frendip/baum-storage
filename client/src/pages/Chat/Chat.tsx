@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Chat.module.scss';
-import ChatHeader from '../ChatHeader/ChatHeader';
-import MessageField from '../MessageField/MessageField';
-import MessageInput from '../MessageInput/MessageInput';
+import ChatHeader from '../../components/ChatHeader/ChatHeader';
+import MessageField from '../../components/MessageField/MessageField';
+import MessageInput from '../../components/MessageInput/MessageInput';
 
 const Chat = () => {
   return (
