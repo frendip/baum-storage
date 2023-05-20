@@ -14,10 +14,9 @@ export class AuthService {
   }
 
   static async getRegistration(
+    username:string,
     email: string,
     password: string,
-    firstname: string,
-    lastname: string,
   ) {
     const url = 'http://localhost:3003/registration';
     return await fetch(url, {
@@ -26,10 +25,7 @@ export class AuthService {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email,
-        firstname,
-        lastname,
-        password,
+     username, password, email
       }),
     });
   }

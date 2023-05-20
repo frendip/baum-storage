@@ -16,9 +16,9 @@ const Login = () => {
 
   const [messageError, setMessageError] = useState<string>('');
   const onSubmitHandler: SubmitHandler<ILogin> = async (data) => {
-    const { login, password } = data;
+    const { email, password } = data;
 
-    const val = await dispatch(fetchLogin({ login, password }));
+    const val = await dispatch(fetchLogin({ email, password }));
     if (val.type.endsWith('fulfilled')) {
       navigate('/');
     } else {

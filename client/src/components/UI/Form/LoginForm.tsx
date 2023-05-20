@@ -24,20 +24,18 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
         <label className={classes.form__label}>
           <input
             className={classes.form__input}
-            {...register('login', {
-              required: 'Enter login',
-              minLength: {
-                value: 4,
-                message: "Login length cannot be less than 4 characters",
+            {...register('email', {
+              required: 'Enter email.',
+              pattern: {
+                value:
+                  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+                message: 'Enter correct email.',
               },
-              maxLength: {
-                value: 20,
-                message: "Login length cannot exceed 20 characters",
-              }
             })}
-            placeholder={"Login"}
+            placeholder={"Email"}
+
           />
-          {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
+          {errors?.email && <div className={classes.form__error}>{errors.email.message}</div>}
         </label>
         <label className={classes.form__label}>
           <input
@@ -51,7 +49,7 @@ const LoginForm: FC<LoginFormProps> = ({ messageError, onSubmitHandler }) => {
                   'Password must contain at least 6 characters.',
               },maxLength: {
                 value: 20,
-                message: "Password length cannot exceed 20 characters",
+                message: "Password length cannot exceed 20 characters.",
               }
             })}
             placeholder={"Password"}

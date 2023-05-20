@@ -1,11 +1,10 @@
 export interface ILogin {
-  login: string;
+  email: string;
   password: string;
 }
 
 export interface IRegistration extends ILogin {
-  firstname: string;
-  lastname: string;
+  username: string;
 }
 
 export interface IPromiseAuth {

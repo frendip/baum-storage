@@ -5,9 +5,9 @@ import { RootState } from '../store';
 
 export const fetchLogin = createAsyncThunk<tokenType, ILogin>(
   'auth/fetchLogin',
-  async ({ login, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await AuthService.getLogin(login, password);
+      const response = await AuthService.getLogin(email, password);
       const data = await response.json();
 
       if (!response.ok) {
@@ -23,9 +23,9 @@ export const fetchLogin = createAsyncThunk<tokenType, ILogin>(
 
 export const fetchRegistration = createAsyncThunk<tokenType, IRegistration>(
   'auth/fetchRegistration',
-  async ({ login, password, firstname, lastname }, { rejectWithValue }) => {
+  async ({ username, password, email  }, { rejectWithValue }) => {
     try {
-      const response = await AuthService.getRegistration(login, password, firstname, lastname);
+      const response = await AuthService.getRegistration( username, password, email  );
       const data = await response.json();
 
       if (!response.ok) {

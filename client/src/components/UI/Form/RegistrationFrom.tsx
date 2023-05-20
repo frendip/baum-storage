@@ -19,67 +19,64 @@ const RegistrationFrom: FC<RegistrationFromProps> = ({ messageError, onSubmitHan
   });
 
   return (
-    <div className={classes.card}>
-      <h2 className={classes.card__title}>Регистрация</h2>
+
       <form className={classes.form} onSubmit={handleSubmit(onSubmitHandler)}>
         {messageError && <div className={classes.form__error}>{messageError}</div>}
+
         <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Почта</div>
           <input
             className={classes.form__input}
-            {...register('login', {
-              required: 'Введите почту.',
-              pattern: {
-                value:
-                  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
-                message: 'Введите корректную почту.',
-              },
-            })}
-          />
-          {errors?.login && <div className={classes.form__error}>{errors.login.message}</div>}
-        </label>
-        <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Имя</div>
-          <input
-            className={classes.form__input}
-            {...register('firstname', {
-              required: 'Введите имя.',
+            {...register('username', {
+              required: 'Enter username.',
               minLength: {
-                value: 2,
-                message: 'Имя должно содержать минимум 2 символа.',
+                value: 4,
+                message: 'Username length cannot be less than 4 characters.',
               },
+              maxLength:{
+                value: 20,
+                message: "Username length cannot exceed 20 characters"
+              }
             })}
+            placeholder={"Username"}
           />
-          {errors?.firstname && (
-            <div className={classes.form__error}>{errors.firstname.message}</div>
+          {errors?.username && (
+            <div className={classes.form__error}>{errors.username.message}</div>
           )}
         </label>
         <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Фамилия</div>
           <input
             className={classes.form__input}
-            {...register('lastname', {
-              required: 'Введите фамилию.',
-              minLength: {
-                value: 2,
-                message: 'Фамилия должна содержать минимум 2 символа.',
+            {...register('email', {
+              required: 'Enter email.',
+              pattern: {
+                value:
+                  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+                message: 'Enter correct email.',
               },
             })}
+            placeholder={"Email"}
+
           />
-          {errors?.lastname && <div className={classes.form__error}>{errors.lastname.message}</div>}
+          {errors?.email && <div className={classes.form__error}>{errors.email.message}</div>}
         </label>
+
         <label className={classes.form__label}>
-          <div className={classes.form__labelTitle}>Пароль</div>
           <input
             type={'password'}
             className={classes.form__input}
             {...register('password', {
-              required: 'Введите пароль.',
+              required: 'Enter password',
               minLength: {
                 value: 6,
-                message: 'Пароль должен содержать минимум 6 символов.',
+                message: 'Password must contain at least 6 characters.',
               },
+              maxLength: {
+                value: 20,
+                message: "Password length cannot exceed 20 characters.",
+              }
             })}
+            placeholder={"Password"}
+
           />
           {errors?.password && <div className={classes.form__error}>{errors.password.message}</div>}
         </label>
@@ -87,7 +84,6 @@ const RegistrationFrom: FC<RegistrationFromProps> = ({ messageError, onSubmitHan
           <CommonButton size={'large'}>Зарегистрироваться!</CommonButton>
         </div>
       </form>
-    </div>
   );
 };
 
