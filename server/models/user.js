@@ -9,7 +9,8 @@ const UserModel = {
     },
     user_name: {
         type: DataTypes.STRING(20),
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.TEXT('tiny'),
@@ -17,7 +18,8 @@ const UserModel = {
     },
     email: {
         type: DataTypes.TEXT('tiny'),
-        allowNull: false
+        allowNull: false,
+        unique: true
     }
 }
 

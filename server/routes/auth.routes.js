@@ -32,8 +32,8 @@ router.post('/login', async (req, res) => {
             return res.status(403).json({ message: `Invalid email or password` })
         }
 
-        const jwtToken = jwt.sign({ userID: candidate.id_user },
-            config.get('jwt'),
+        const jwtToken = jwt.sign({ id_user: candidate.id_user },
+            config.get("jwt"),
             { expiresIn: '1h' }
         );
 
@@ -53,19 +53,6 @@ router.post('/registration', async (req, res) => {
             return res.status(400).json({ message: `Incorrect data` })
         }
 
-        const candidate = await db.models.user.findOne({
-            where: {
-                email: email
-            },
-            attributes: [
-                'id_user'
-            ]
-        });
-
-        if (candidate !== null) {
-            return res.status(404).json({ message: `This email has already been registered` })
-        }
-
         const protectedPassword = await bcrypt.hash(password, 12);
         const user = await db.models.user.create({
             user_name: username,
@@ -73,8 +60,8 @@ router.post('/registration', async (req, res) => {
             password: protectedPassword
         });
 
-        const jwtToken = jwt.sign({ userID: user.id_user },
-            config.get('jwt'),
+        const jwtToken = jwt.sign({ id_user: user.id_user },
+            config.get("jwt"),
             { expiresIn: '1h' }
         );
 

@@ -1,6 +1,9 @@
 const { Sequelize } = require("sequelize")
-const UserModel = require('./models/user')
 const config = require("config")
+const UserModel = require('./models/user')
+const ChatModel = require("./models/chat")
+const MessageModel = require("./models/message");
+const MembersModel = require("./models/members");
 
 const db_config = config.get('db')
 const db = new Sequelize(db_config.database, db_config.user, db_config.password, {
@@ -19,10 +22,16 @@ const db = new Sequelize(db_config.database, db_config.user, db_config.password,
 })()
 
 db.define('user', UserModel);
+db.define('chat', ChatModel);
+db.define('message', MessageModel);
+db.define('members', MembersModel);
 
 (async () => {
     try {
         await db.models.user.sync()
+        await db.models.chat.sync()
+        await db.models.message.sync()
+        await db.models.members.sync()
         console.log(`Synchronization with ${db_config.database} has been successes!`)
     } catch (error) {
         console.log(`Unable to synchronize with ${db_config.database}, error ${error}!`)
