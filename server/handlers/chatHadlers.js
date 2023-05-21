@@ -2,8 +2,18 @@ const db = require('../db')
 
 module.exports = (io, socket) => {
     const getChats = async () => {
-        const chats = await db.models.chgat.findAll()
+        const chats = await db.models.members.findAll({
+            where: {
+                id_user: socket.userID
+            },
+            attributes: [
+                'chats.id_chat',
+                'chats.chat_name'
+            ],
+            include: [db.models.chat]
+        })
 
+        console.log(chats)
         socket.rooms = chats
 
         chats.forEach((chat) => {
