@@ -4,6 +4,12 @@
   justify-content: flex-start;
   width: 100%;
 
+  .container {
+    background-color: #9d48e8;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
 }
 
 .myMessage {
@@ -12,10 +18,11 @@
   justify-content: flex-end;
   width: 100%;
 
+  .container {
+    background-color: #6a7ee7;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
 }
 
-.container {
-  background-color: #9d48e8;
-  padding: 5px;
-  border-radius: 5px;
-}
