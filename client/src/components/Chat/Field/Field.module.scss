@@ -1,0 +1,13 @@
+.field {
+  height: 100%;
+
+  padding: 0 0 5px 5px;
+
+  &__container {
+    border-radius: 15px;
+    background-color: #453563;
+    height: 100%;
+    font-size: 25px;
+    overflow: auto;
+  }
+}

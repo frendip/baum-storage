@@ -1,15 +1,15 @@
 import React from 'react';
 import classes from './Chat.module.scss';
-import ChatHeader from '../../components/ChatHeader/ChatHeader';
-import MessageField from '../../components/MessageField/MessageField';
-import MessageInput from '../../components/MessageInput/MessageInput';
+import Header from '../../components/Chat/Header/Header';
+import Field from '../../components/Chat/Field/Field';
+import Input from '../../components/Chat/Input/Input';
 
 const Chat = () => {
   return (
     <div className={classes.wrapper}>
-      <ChatHeader />
-      <MessageField />
-      <MessageInput />
+      <Header />
+      <Field />
+      <Input />
     </div>
   );
 };
