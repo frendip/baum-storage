@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"EmptyChat.module.css"}
+{"version":3,"sourceRoot":"","sources":["EmptyChat.module.scss"],"names":[],"mappings":"AACA;EACE;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA","file":"EmptyChat.module.css"}

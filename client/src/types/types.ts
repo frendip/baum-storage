@@ -20,4 +20,10 @@ export interface IMessage {
   date: Date;
 }
 
+export interface IChat {
+  id_chat: number;
+  chat_name: string;
+  password: number;
+}
+
 export type tokenType = string;
