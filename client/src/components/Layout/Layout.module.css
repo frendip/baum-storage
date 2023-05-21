@@ -1,17 +1,20 @@
 .wrapper {
-  display: block;
-  padding: 20px 0;
-  gap: 0 10px;
-  color: white;
-  height: 100vh;
+  width: calc(100vw - 350px);
+  height: calc(100vh - 60px);
+  max-width: 1400px;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
-.content {
-  flex: 1;
-  height: 100%;
+.container {
+  padding: 20px 0;
+  width: 95%;
   margin: 0 auto;
-  max-width: 1500px;
   display: flex;
+}
+.container__chatSidebar {
+  flex-basis: 30%;
 }
 
 /*# sourceMappingURL=Layout.module.css.map */
