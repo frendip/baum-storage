@@ -10,7 +10,7 @@ module.exports = (io, socket) => {
             socket.join(chat.id_chat)
         })
 
-        io.in(socket).emit('chats', chats)
+        socket.emit('chats', chats)
     }
 
     const addChat = async ({ userID, name, password }) => {
