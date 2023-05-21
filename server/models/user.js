@@ -20,6 +20,10 @@ const UserModel = {
         type: DataTypes.TEXT('tiny'),
         allowNull: false,
         unique: true
+    },
+    status: {
+        type: DataTypes.TINYINT,
+        defaultValue: 0
     }
 }
 
