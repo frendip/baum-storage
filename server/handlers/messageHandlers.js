@@ -1,8 +1,8 @@
 const db = require('../db')
 
 module.exports = (io, socket) => {
-    const getMessages = () => {
-        const messages = db.models.message.findAll({
+    const getMessages = async () => {
+        const messages = await db.models.message.findAll({
             where: {
                 id_chat: socket.roomID
             },
