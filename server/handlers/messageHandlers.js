@@ -2,9 +2,11 @@ const db = require('../db')
 
 module.exports = (io, socket) => {
     const getMessages = async () => {
+        const { roomID } = socket.handshake.query
+
         const messages = await db.models.message.findAll({
             where: {
-                id_chat: socket.roomID
+                id_chat: roomID
             },
             attributes: [
                 'id_msg',
@@ -14,17 +16,19 @@ module.exports = (io, socket) => {
             ]
         })
 
-        io.in(socket.roomID).emit('messages', messages)
+        io.in(roomID).emit('messages', messages)
     }
 
     const addMessages = async (message) => {
+        const { roomID } = socket.handshake.query
+
         await db.models.message.create({
-            id_chat: socket.roomID,
+            id_chat: roomID,
             date: new Date(),
             ...message
         })
 
-        getMessages()
+        await getMessages()
     }
 
     const removeMessage = async (messageID) => {
@@ -34,7 +38,7 @@ module.exports = (io, socket) => {
             }
         })
 
-        getMessages()
+        await getMessages()
     }
 
     socket.on('message:get', getMessages)
