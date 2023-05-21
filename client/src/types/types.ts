@@ -1,25 +1,23 @@
 export interface ILogin {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 export interface IRegistration extends ILogin {
-    username: string;
-}
-
-export interface IPromiseAuth {
-    type: string;
-    payload: {
-        token?: tokenType;
-    };
+  username: string;
 }
 
 export interface IUser {
-    id: string;
-    email: string;
-    username: string;
+  id: string;
+  email: string;
+  username: string;
+}
 
-
+export interface IMessage {
+  id_msg: number;
+  msg: string;
+  id_user: number;
+  date: Date;
 }
 
 export type tokenType = string;

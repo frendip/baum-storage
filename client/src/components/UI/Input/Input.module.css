@@ -28,4 +28,17 @@
   color: #c5c5c5;
 }
 
+.chatInput {
+  width: 100%;
+  padding: 15px 0 15px 15px;
+  font-size: 16px;
+  color: #c5c5c5;
+}
+.chatInput::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.6;
+  color: #c5c5c5;
+}
+
 /*# sourceMappingURL=Input.module.css.map */
