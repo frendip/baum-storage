@@ -33,7 +33,10 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('User disconnected')
-        socket.leave(roomID)
+
+        socket.rooms.forEach((chat) => {
+            socket.leave(chat.id_chat)
+        })
     })
 })
 
