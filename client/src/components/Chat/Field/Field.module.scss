@@ -5,9 +5,12 @@
 
   &__container {
     border-radius: 15px;
-    background-color: #453563;
+    background-color: #232323;
     height: 100%;
     font-size: 25px;
     overflow: auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
