@@ -13,6 +13,7 @@ const io        = require('socket.io')(server, {
 const PORT      = config.get('port') || 3000
 const registerMessageHandler = require('./handlers/messageHandlers')
 const registerUserHandler = require('./handlers/userHandlers')
+const registerChatHandler = require('./handlers/chatHadlers')
 
 app.use(cors())
 app.use(express.json())
@@ -29,6 +30,7 @@ io.on('connection', (socket) => {
 
     registerMessageHandler(io, socket)
     registerUserHandler(io, socket)
+    registerChatHandler(io, socket)
 
     socket.on('disconnect', () => {
         console.log('User disconnected')
