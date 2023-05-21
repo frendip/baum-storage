@@ -1,0 +1,31 @@
+.baseInput {
+  color: inherit;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  transition-duration: 0.2s;
+  border-radius: 10px;
+  border: 1px solid #292929;
+  background-color: #303030;
+}
+
+.searchInput {
+  background-image: url("../../../assets/inputSearchIcon.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 5px;
+  background-size: 5%;
+  width: 100%;
+  padding: 3px 0 3px 25px;
+  font-size: 16px;
+  color: #c5c5c5;
+}
+.searchInput::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.6;
+  color: #c5c5c5;
+}
+
+/*# sourceMappingURL=Input.module.css.map */
