@@ -3,9 +3,10 @@
   padding: 0 0 5px 5px;
 }
 .header__container {
-  background-color: #2a2139;
+  background-color: #232323;
   border-radius: 15px;
   justify-content: space-between;
+  color: #c5c5c5;
   height: 100%;
   display: flex;
   align-items: center;

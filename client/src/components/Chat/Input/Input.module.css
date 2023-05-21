@@ -1,6 +1,10 @@
-.container {
+.input {
+  padding: 0 0 5px 5px;
+}
+.input__container {
   height: 70px;
-  background-color: #2a2139;
+  background-color: #232323;
+  border-radius: 15px;
 }
 
 /*# sourceMappingURL=Input.module.css.map */
