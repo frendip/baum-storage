@@ -20,7 +20,7 @@ const Chat = () => {
     });
   }, [socket]);
 
-  const { users, messages } = useChat(1);
+  const { users, messages } = useChat();
   console.log(users, messages);
 
   return (

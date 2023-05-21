@@ -6,11 +6,11 @@ import { useAppSelector } from './useAppSelector';
 
 const SERVER_URL = baseUrl;
 
-export const useChat = (room_id: number) => {
+export const useChat = () => {
   const userId = useAppSelector((state) => state.user?.user?.id);
   const [users, setUsers] = useState<IUser[]>([]);
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const [socket] = useState(() => io(SERVER_URL, { query: { roomID: room_id } }));
+  const [socket] = useState(() => io(SERVER_URL, { query: { userID: userId } }));
 
   useEffect(() => {
     socket.emit('user:add', { userID: Number(userId) });
@@ -18,8 +18,8 @@ export const useChat = (room_id: number) => {
       setUsers(users);
     });
 
-    socket.emit('message:get');
-    socket.on('messages', (messages) => {
+    socket.emit('chat:get');
+    socket.on('chats', (chats) => {
       setMessages(messages);
     });
     return () => {
