@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './ChatLayout.module.scss';
+import classes from './Layout.module.scss';
 import { Outlet } from 'react-router-dom';
 import ChatsSidebar from '../ChatsSidebar/ChatsSidebar';
 
-const ChatLayout = () => {
+const Layout = () => {
   return (
     <>
       <div className={classes.wrapper}>
@@ -18,4 +18,4 @@ const ChatLayout = () => {
   );
 };
 
-export default ChatLayout;
+export default Layout;
