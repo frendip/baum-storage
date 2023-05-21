@@ -23,10 +23,9 @@ app.use('/lk', require('./routes/lk.routes'))
 io.on('connection', (socket) => {
     console.log('New user connect...')
 
-    const { roomID } = socket.handshake.query
+    const { userID } = socket.handshake.query
 
-    socket.roomID = roomID
-    socket.join(roomID)
+    socket.userID = userID
 
     registerMessageHandler(io, socket)
     registerUserHandler(io, socket)
@@ -34,7 +33,10 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('User disconnected')
-        socket.leave(roomID)
+
+        socket.rooms.forEach((chat) => {
+            socket.leave(chat.id_chat)
+        })
     })
 })
 

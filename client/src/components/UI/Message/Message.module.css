@@ -1,0 +1,25 @@
+.message {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.message .container {
+  background-color: #9d48e8;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.myMessage {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.myMessage .container {
+  background-color: #6a7ee7;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=Message.module.css.map */

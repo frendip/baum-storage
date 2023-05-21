@@ -4,10 +4,11 @@ import Header from '../../components/Chat/Header/Header';
 import Field from '../../components/Chat/Field/Field';
 import Input from '../../components/Chat/Input/Input';
 import io from 'socket.io-client';
+import { useChat } from '../../hooks/useChat2';
 
 const Chat = () => {
   const socket = io('http://localhost:4000', { query: { roomID: 1 } });
-  
+
   const sendMess = () => {
     socket.emit('message:add', { id_user: 1, msg: '123eee' });
     alert(123);
@@ -18,6 +19,9 @@ const Chat = () => {
       console.log(data);
     });
   }, [socket]);
+
+  const { users, messages } = useChat();
+  console.log(users, messages);
 
   return (
     <div className={classes.wrapper}>
