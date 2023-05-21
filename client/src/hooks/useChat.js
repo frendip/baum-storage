@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 // получаем класс IO
 import io from 'socket.io-client';
-import { nanoid } from 'nanoid';
-// наши хуки
-import { useBeforeUnload } from './useBeforeUnload';
-import { useLocalStorage } from './useLocalstorage';
+import { baseUrl } from '../utills/cofig';
 
 // адрес сервера
 // требуется перенаправление запросов - смотрите ниже
-const SERVER_URL = 'http://localhost:5000';
+const SERVER_URL = baseUrl;
 
 // хук принимает название комнаты
 export const useChat = (roomId) => {
@@ -16,11 +13,6 @@ export const useChat = (roomId) => {
   const [users, setUsers] = useState([]);
   // локальное состояние для сообщений
   const [messages, setMessages] = useState([]);
-
-  // создаем и записываем в локальное хранинище идентификатор пользователя
-  const [userId] = useLocalStorage('userId', nanoid(8));
-  // получаем из локального хранилища имя пользователя
-  const [username] = useLocalStorage('username');
 
   // useRef() используется не только для получения доступа к DOM-элементам,
   // но и для хранения любых мутирующих значений в течение всего жизненного цикла компонента
@@ -31,7 +23,7 @@ export const useChat = (roomId) => {
     // и записываем объект с названием комнаты в строку запроса "рукопожатия"
     // socket.handshake.query.roomId
     socketRef.current = io(SERVER_URL, {
-      query: { roomId },
+      query: { id_chat: 1 },
     });
 
     // отправляем событие добавления пользователя,

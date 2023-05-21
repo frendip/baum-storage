@@ -5,6 +5,24 @@
   height: 70px;
   background-color: #232323;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px 0 15px;
+}
+.input__clip {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+.input__clip img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=Input.module.css.map */

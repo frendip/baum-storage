@@ -1,43 +1,39 @@
-const db = require('../db')
+const db = require("../db");
 
 module.exports = (io, socket) => {
-    const getMessages = () => {
-        const messages = db.models.message.findAll({
-            where: {
-                id_chat: socket.roomID
-            },
-            attributes: [
-                'id_msg',
-                'msg',
-                'id_user',
-                'date'
-            ]
-        })
+  const getMessages = async () => {
+    const messages = await db.models.message.findAll({
+      where: {
+        id_chat: socket.roomID,
+      },
+      attributes: ["id_msg", "msg", "id_user", "date"],
+    });
+    console.log(messages);
+    io.in(socket.roomID).emit("messages", messages);
+  };
 
-        io.in(socket.roomID).emit('messages', messages)
-    }
+  const addMessages = async (message) => {
+    console.log(message);
+    await db.models.message.create({
+      id_chat: socket.roomID,
+      date: new Date(),
+      ...message,
+    });
 
-    const addMessages = async (message) => {
-        await db.models.message.create({
-            id_chat: socket.roomID,
-            date: new Date(),
-            ...message
-        })
+    getMessages();
+  };
 
-        getMessages()
-    }
+  const removeMessage = async (messageID) => {
+    await db.models.message.destroy({
+      where: {
+        id_msg: messageID,
+      },
+    });
 
-    const removeMessage = async (messageID) => {
-        await db.models.message.destroy({
-            where: {
-                id_msg: messageID
-            }
-        })
+    getMessages();
+  };
 
-        getMessages()
-    }
-
-    socket.on('message:get', getMessages)
-    socket.on('message:add', addMessages)
-    socket.on('message:remove', removeMessage)
-}
+  socket.on("message:get", getMessages);
+  socket.on("message:add", addMessages);
+  socket.on("message:remove", removeMessage);
+};
