@@ -28,7 +28,6 @@ const Field: FC = () => {
     return (
         <div className={classes.field}>
             <div className={classes.field__container}>
-
                 {chatList.map((item) => {
                         const isOwner = item.owner_id === "123"
                         {
@@ -39,13 +38,6 @@ const Field: FC = () => {
 
                     }
                 )}
-                {/*<Message message={chatList[0].message} status={true} owner_id={chatList[0].owner_id} owner_avatar={''}*/}
-                {/*         dateTime={''}/>*/}
-                {/*<Message message={chatList[1].message} status={true} owner_id={chatList[1].owner_id} owner_avatar={''}*/}
-                {/*         dateTime={''}/>*/}
-                {/*<Message message={chatList[2].message} status={true} owner_id={chatList[2].owner_id} owner_avatar={''}*/}
-                {/*         dateTime={''}/>*/}
-
             </div>
         </div>
     );
