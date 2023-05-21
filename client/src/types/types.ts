@@ -15,10 +15,10 @@ export interface IPromiseAuth {
 }
 
 export interface IUser {
-    Id: string;
+    id: string;
     email: string;
     username: string;
-    
+
 
 }
 
