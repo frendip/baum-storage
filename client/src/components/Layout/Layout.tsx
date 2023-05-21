@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classes from './Layout.module.scss';
 import { Outlet } from 'react-router-dom';
-import ChatsSidebar from '../ChatsSidebar/ChatsSidebar';
+import Sidebar from '../Sidebar/Sidebar';
 
-const Layout = () => {
+const Layout: FC = () => {
   return (
     <>
       <div className={classes.wrapper}>
-        <div className={classes.container}>
-          <div className={classes.container__chatSidebar}>
-            <ChatsSidebar />
-          </div>
+        <div className={classes.content}>
+          <Sidebar />
           <Outlet />
         </div>
       </div>
