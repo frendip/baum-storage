@@ -10,6 +10,7 @@ export const useChat = () => {
   const userId = useAppSelector((state) => state.user?.user?.id);
   const [users, setUsers] = useState<IUser[]>([]);
   const [messages, setMessages] = useState<IMessage[]>([]);
+  console.log(userId);
   const [socket] = useState(() => io(SERVER_URL, { query: { userID: userId } }));
 
   useEffect(() => {

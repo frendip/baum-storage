@@ -1,75 +1,84 @@
-const db = require('../db')
+const db = require("../db");
 
 module.exports = (io, socket) => {
-    const getChats = async () => {
-        const chats = await db.models.members.findAll({
-            where: {
-                id_user: socket.userID
-            },
-            attributes: [
-                'chats.id_chat',
-                'chats.chat_name'
-            ],
-            include: [db.models.chat]
+  const getChats = async () => {
+    const chats_id = await db.models.members.findAll({
+      where: {
+        id_user: socket.userID,
+      },
+      attributes: ["id_chat"],
+    });
+
+    console.log(socket.userID, chats_id);
+    const chats = [];
+
+    for (const chat of chats_id) {
+      chats.push(
+        await db.models.chat.findOne({
+          where: {
+            id_chat: chat.id_chat,
+          },
         })
-
-        console.log(chats)
-        socket.rooms = chats
-
-        chats.forEach((chat) => {
-            socket.join(chat.id_chat)
-        })
-
-        socket.emit('chats', chats)
+      );
     }
 
-    const addChat = async ({ userID, name, password }) => {
-        const chat = await db.models.chat.findOne({
-            where: {
-                chat_name: name
-            }
-        })
+    console.log(chats);
+    socket.rooms = chats;
 
-        if (chat === null) {
-            const new_chat = await db.models.chat.create({
-                chat_name: name,
-                password: password
-            })
+    chats.forEach((chat) => {
+      socket.join(chat.id_chat);
+    });
 
-            await db.models.member.create({
-                id_chat: new_chat.id_chat,
-                id_user: userID
-            })
-        }
+    socket.emit("chats", chats);
+  };
 
-        await getChats()
+  const addChat = async ({ userID, name, password }) => {
+    const chat = await db.models.chat.findOne({
+      where: {
+        chat_name: name,
+      },
+    });
+
+    if (chat === null) {
+      const new_chat = await db.models.chat.create({
+        chat_name: name,
+        password: password,
+      });
+
+      await db.models.member.create({
+        id_chat: new_chat.id_chat,
+        id_user: userID,
+      });
     }
 
-    const addUserToChat = async ({ userID, chatID }) => {
-        const chat = await db.models.chat.findOne({
-            where: {
-                id_chat: chatID
-            }
-        })
+    await getChats();
+  };
 
-        const member = await db.models.members.findOne({
-            where: {
-                id_char: chatID,
-                id_user: userID
-            }
-        })
+  const addUserToChat = async ({ userID, chatID }) => {
+    const chat = await db.models.chat.findOne({
+      where: {
+        id_chat: chatID,
+      },
+    });
 
-        if (chat !== null && member === null) {
-            await db.models.member.create({
-                id_chat: chatID,
-                id_user: userID
-            })
-        }
+    const member = await db.models.members.findOne({
+      where: {
+        id_char: chatID,
+        id_user: userID,
+      },
+    });
 
-        await getChats()
+    if (chat !== null && member === null) {
+      await db.models.member.create({
+        id_chat: chatID,
+        id_user: userID,
+      });
     }
 
-    socket.on('chat:get', getChats)
-    socket.on('chat:add', addChat)
-    socket.on('chat:newUser', addUserToChat)
-}
+    await getChats();
+  };
+
+  socket.on("chat:get", getChats);
+  socket.on("chat:add", addChat);
+  socket.on("chat:newUser", addUserToChat);
+};
