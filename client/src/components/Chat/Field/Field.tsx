@@ -19,7 +19,7 @@ const Field: FC = () => {
             dateTime: '',
         },
         {
-            message: "тертье",
+            message: "Третье",
             status: true,
             owner_id: '',
             owner_avatar: '',
