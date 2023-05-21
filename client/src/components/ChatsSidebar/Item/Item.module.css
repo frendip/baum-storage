@@ -1,3 +1,35 @@
-
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+}
+.item__avatar {
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.item__avatar img {
+  border-radius: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.item__info {
+  display: flex;
+  flex-direction: column;
+}
+.item__name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+.item__message {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+}
 
 /*# sourceMappingURL=Item.module.css.map */

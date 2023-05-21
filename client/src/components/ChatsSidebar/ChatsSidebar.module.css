@@ -1,5 +1,19 @@
-.content {
-  color: white;
+.chatsSidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.chatsSidebar__header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  padding-bottom: 5px;
+}
+.chatsSidebar__list {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
 }
 
 /*# sourceMappingURL=ChatsSidebar.module.css.map */

@@ -1,3 +1,19 @@
-.content {
-  color: white;
+.chatsSidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    padding-bottom: 5px;
+  }
+
+  &__list {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+  }
 }
