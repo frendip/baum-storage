@@ -4,7 +4,13 @@ module.exports = (io, socket) => {
     const getChats = async () => {
         const chats = await db.models.chgat.findAll()
 
-        io.in(socket.roomID).emit('chats', chats)
+        socket.rooms = chats
+
+        chats.forEach((chat) => {
+            socket.join(chat.id_chat)
+        })
+
+        io.in(socket).emit('chats', chats)
     }
 
     const addChat = async ({ userID, name, password }) => {

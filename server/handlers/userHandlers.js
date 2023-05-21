@@ -4,7 +4,7 @@ module.exports = (io, socket) => {
     const getUsers = async () => {
         const users = await db.models.user.findAll()
 
-        io.in(socket.roomID).emit('users', users)
+        io.in(socket).emit('users', users)
     }
 
     const addUser = async ({ userID }) => {
